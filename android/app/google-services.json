@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "122805086604",
+    "project_id": "mywork-9d508",
+    "storage_bucket": "mywork-9d508.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:122805086604:android:086d495970b17f45264ea9",
+        "android_client_info": {
+          "package_name": "com.barefooted.mywork"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "122805086604-v0mr1vr1m5lsn2e20cjfi9jkt8iq5kpi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVuJBiaFt2sShEBHL3bc1T4bkvdD23SQs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "122805086604-v0mr1vr1m5lsn2e20cjfi9jkt8iq5kpi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
