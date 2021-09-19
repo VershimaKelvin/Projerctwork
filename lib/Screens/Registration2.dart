@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:location/location.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mywork/Screens/Registration3.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Registration2 extends StatefulWidget {
   @override
@@ -40,8 +40,7 @@ class _Registration2State extends State<Registration2> {
                 child: Card(
                   color: Color(0xffF5F5F5),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0)
-                  ),
+                      borderRadius: BorderRadius.circular(15.0)),
                   child: ListTile(
                     title: Text(
                       'Pay School fee',
@@ -52,7 +51,7 @@ class _Registration2State extends State<Registration2> {
                         color: Colors.blue,
                       ),
                     ),
-                    subtitle:Text(
+                    subtitle: Text(
                       'Next you have to pay your school fee, 43,000 naira at Heritage bank. ',
                       style: TextStyle(
                         fontSize: 12,
@@ -63,10 +62,15 @@ class _Registration2State extends State<Registration2> {
                     ),
                     trailing: FlatButton(
                       color: Colors.blue,
-                      onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => Registration3()));
+                      onPressed: () async {
+                        final prefs = await SharedPreferences.getInstance();
+                        prefs.setInt('counter', 2);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Registration3()));
                       },
-                      child:Text(
+                      child: Text(
                         'Done',
                         style: TextStyle(
                           fontSize: 15,
@@ -74,31 +78,29 @@ class _Registration2State extends State<Registration2> {
                           fontFamily: 'Cabin',
                           color: Colors.white,
                         ),
-                      ),),
+                      ),
+                    ),
                   ),
                 ),
               ),
               Container(
                 width: screenWidth,
-                height: screenHeight*0.72,
+                height: screenHeight * 0.72,
                 child: GoogleMap(
                   myLocationEnabled: true,
                   markers: _makers,
                   initialCameraPosition: CameraPosition(
-                  target: LatLng(4.927873,8.330530),
-                  zoom: 17,
-                ),
-                  onMapCreated: (GoogleMapController controller){
+                    target: LatLng(4.927873, 8.330530),
+                    zoom: 17,
+                  ),
+                  onMapCreated: (GoogleMapController controller) {
                     setState(() {
-                      _makers.add(
-                          Marker(
-                              markerId: MarkerId('id-1'),
-                              position:LatLng(4.927873, 8.330530),
-                              infoWindow: InfoWindow(
-                                  title: 'Heritage Bank',
-                              )
-                          )
-                      );
+                      _makers.add(Marker(
+                          markerId: MarkerId('id-1'),
+                          position: LatLng(4.927873, 8.330530),
+                          infoWindow: InfoWindow(
+                            title: 'Heritage Bank',
+                          )));
                     });
                   },
                 ),

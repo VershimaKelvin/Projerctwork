@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mywork/Screens/Registration6.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Registration5 extends StatefulWidget {
   @override
@@ -60,7 +61,9 @@ class _Registration5State extends State<Registration5> {
                     ),
                     trailing: FlatButton(
                       color: Colors.blue,
-                      onPressed: (){
+                      onPressed: ()async{
+                             final prefs = await SharedPreferences.getInstance();
+                          prefs.setInt('counter', 5);
                         Navigator.push(context, MaterialPageRoute(builder: (context) => Registration6()));
                       },
                       child:Text(
