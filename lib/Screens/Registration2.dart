@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:location/location.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mywork/Screens/Registration3.dart';
 
@@ -8,6 +9,7 @@ class Registration2 extends StatefulWidget {
 }
 
 class _Registration2State extends State<Registration2> {
+  Set<Marker> _makers = {};
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
@@ -79,10 +81,26 @@ class _Registration2State extends State<Registration2> {
               Container(
                 width: screenWidth,
                 height: screenHeight*0.72,
-                child: GoogleMap(initialCameraPosition: CameraPosition(
+                child: GoogleMap(
+                  myLocationEnabled: true,
+                  markers: _makers,
+                  initialCameraPosition: CameraPosition(
                   target: LatLng(4.927873,8.330530),
                   zoom: 17,
                 ),
+                  onMapCreated: (GoogleMapController controller){
+                    setState(() {
+                      _makers.add(
+                          Marker(
+                              markerId: MarkerId('id-1'),
+                              position:LatLng(4.927873, 8.330530),
+                              infoWindow: InfoWindow(
+                                  title: 'Heritage Bank',
+                              )
+                          )
+                      );
+                    });
+                  },
                 ),
               )
             ],

@@ -8,6 +8,7 @@ class Registration3 extends StatefulWidget {
 }
 
 class _Registration3State extends State<Registration3> {
+  Set<Marker> _makers = {};
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
@@ -80,10 +81,26 @@ class _Registration3State extends State<Registration3> {
               Container(
                 width: screenWidth,
                 height: screenHeight*0.63,
-                child: GoogleMap(initialCameraPosition: CameraPosition(
+                child: GoogleMap(
+                  myLocationEnabled: true,
+                  markers: _makers,
+                  initialCameraPosition: CameraPosition(
                   target: LatLng(4.927873,8.330530),
                   zoom: 17,
                 ),
+                  onMapCreated: (GoogleMapController controller){
+                    setState(() {
+                      _makers.add(
+                          Marker(
+                              markerId: MarkerId('id-1'),
+                              position:LatLng(4.924895, 8.329027),
+                              infoWindow: InfoWindow(
+                                  title: 'New Science Block',
+                              )
+                          )
+                      );
+                    });
+                  },
                 ),
               ),
             ],

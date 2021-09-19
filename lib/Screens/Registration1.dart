@@ -23,7 +23,7 @@ class _Registration1State extends State<Registration1> {
   @override
   void initState() {
     super.initState();
-    getUserLocation();
+    // getUserLocation();
     polylinePoints = PolylinePoints();
   }
 
@@ -69,7 +69,7 @@ class _Registration1State extends State<Registration1> {
                       ),
                     ),
                     subtitle: Text(
-                      'You have to pay your acceptance fee, 150000 naira at CRUTECH Micro finance bank',
+                      'You have to pay your acceptance fee at CRUTECH Micro finance bank or heritage bank',
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.normal,
@@ -112,20 +112,27 @@ class _Registration1State extends State<Registration1> {
                   polylines: _polylines,
                   initialCameraPosition: CameraPosition(
                     target: LatLng(4.927873, 8.330530),
-                    zoom: 15,
+                    zoom: 17,
                   ),
                   onMapCreated: (GoogleMapController controller){
-                    setPolyLines();
                     setState(() {
                       _makers.add(
-                        Marker(
-                            markerId: MarkerId('id-1'),
-                            position:LatLng(4.927873, 8.330530),
+                        Marker  (
+                            markerId: MarkerId('stage1'),
+                            position:LatLng(4.931485, 8.329666),
                             infoWindow: InfoWindow(
-                            title: 'MicroFinace Bank',
-                            snippet: 'pay acceptance fee here'
+                            title: 'MicroFinance',
                           )
-                        )
+                        ),
+                      );
+                      _makers.add(
+                          Marker(
+                              markerId: MarkerId('id-1'),
+                              position:LatLng(4.927873, 8.330530),
+                              infoWindow: InfoWindow(
+                                title: 'Heritage Bank',
+                              )
+                          )
                       );
                     });
                   },
@@ -138,48 +145,5 @@ class _Registration1State extends State<Registration1> {
     );
   }
 
-  void setPolyLines() async {
-    PolylineResult result = await polylinePoints.getRouteBetweenCoordinates(
-        "AIzaSyDJwR_Z24e_f8fa3hIP3FIRa3HsxJKGaXs",
-        PointLatLng(_currentPosition.latitude, _currentPosition.longitude),
-        PointLatLng(4.947792, 8.324729));
-  }
 
-  void getUserLocation() async {
-    Location location = new Location();
-
-    bool _serviceEnabled;
-    PermissionStatus _permissionGranted;
-    LocationData _locationData;
-
-    _serviceEnabled = await location.serviceEnabled();
-    _permissionGranted = await location.hasPermission();
-
-    if (!_serviceEnabled) {
-      _serviceEnabled = await location.requestService();
-      if (!_serviceEnabled) {
-        return;
-      }
-    }
-
-    if (_permissionGranted == PermissionStatus.denied) {
-      _permissionGranted = await location.requestPermission();
-      if (_permissionGranted != PermissionStatus.granted) {
-        return;
-      }
-    }
-
-    _currentPosition = await location.getLocation();
-    LatLng initialCameraPosition =
-        LatLng(_currentPosition.latitude, _currentPosition.longitude);
-    print("${_currentPosition.longitude}:${_currentPosition.latitude}");
-
-    location.onLocationChanged.listen((LocationData currentLocation) {
-      setState(() {
-        _currentPosition = currentLocation;
-        initialCameraPosition =
-            LatLng(_currentPosition.latitude, _currentPosition.longitude);
-      });
-    });
-  }
 }

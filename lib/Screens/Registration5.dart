@@ -8,6 +8,7 @@ class Registration5 extends StatefulWidget {
 }
 
 class _Registration5State extends State<Registration5> {
+  Set<Marker> _makers = {};
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
@@ -77,10 +78,26 @@ class _Registration5State extends State<Registration5> {
               Container(
                 width: screenWidth,
                 height: screenHeight*0.7,
-                child: GoogleMap(initialCameraPosition: CameraPosition(
+                child: GoogleMap(
+                  myLocationEnabled: true,
+                  markers: _makers,
+                  initialCameraPosition: CameraPosition(
                   target: LatLng(4.927873,8.330530),
                   zoom: 17,
                 ),
+                  onMapCreated: (GoogleMapController controller){
+                    setState(() {
+                      _makers.add(
+                          Marker(
+                              markerId: MarkerId('id-1'),
+                              position:LatLng(4.927307, 8.331751),
+                              infoWindow: InfoWindow(
+                                title: 'Education Block',
+                              )
+                          )
+                      );
+                    });
+                  },
                 ),
               )
             ],

@@ -16,14 +16,13 @@ class _LoginState extends State<Login> {
 
   String email;
   String password;
-
-
+  String userEmail;
+  String text;
 
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
-
 
     void signUserIn()async {
 
@@ -31,14 +30,16 @@ class _LoginState extends State<Login> {
       final user=  await _auth.signInWithEmailAndPassword(email: email, password: password);
 
         if(user!=null){
-          Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Login Successful'),));
+          userEmail = await _auth.currentUser.email;
+          Navigator.pop(context, MaterialPageRoute(builder: (context) => Home()));
         }
 
       }on FirebaseAuthException catch (e) {
           if (e.code == 'user-not-found') {
-            print('No user found for that email.');
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Login failed, user not found'),));
           } else if (e.code == 'wrong-password') {
-            print('Wrong password provided for that user.');
+           ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Login failed check details'),));
           }
       }
     }
