@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mywork/Screens/Home.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Registration6 extends StatefulWidget {
   @override
@@ -35,15 +36,14 @@ class _Registration6State extends State<Registration6> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Padding(
-
                 padding: const EdgeInsets.all(8.0),
                 child: Card(
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0)
-                  ),
+                      borderRadius: BorderRadius.circular(15.0)),
                   color: Color(0xffF5F5F5),
                   child: ListTile(
-                    title: Text('Medicals',
+                    title: Text(
+                      'Medicals',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -51,7 +51,7 @@ class _Registration6State extends State<Registration6> {
                         color: Colors.blue,
                       ),
                     ),
-                    subtitle:Text(
+                    subtitle: Text(
                       'This is the final stage of your Registration, you need to get your medicals done at the schools clinic',
                       style: TextStyle(
                         fontSize: 13,
@@ -62,10 +62,17 @@ class _Registration6State extends State<Registration6> {
                     ),
                     trailing: FlatButton(
                       color: Colors.blue,
-                      onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+                      onPressed: () async {
+                        final prefs = await SharedPreferences.getInstance();
+                        prefs.setInt('counter', 6);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Home(),
+                          ),
+                        );
                       },
-                      child:Text(
+                      child: Text(
                         'Finish',
                         style: TextStyle(
                           fontSize: 15,
@@ -73,31 +80,29 @@ class _Registration6State extends State<Registration6> {
                           fontFamily: 'Cabin',
                           color: Colors.white,
                         ),
-                      ),),
+                      ),
+                    ),
                   ),
                 ),
               ),
               Container(
                 width: screenWidth,
-                height: screenHeight*0.7,
+                height: screenHeight * 0.7,
                 child: GoogleMap(
                   myLocationEnabled: true,
                   markers: _makers,
                   initialCameraPosition: CameraPosition(
-                  target: LatLng(4.927873,8.330530),
-                  zoom: 17,
-                ),
-                  onMapCreated: (GoogleMapController controller){
+                    target: LatLng(4.927873, 8.330530),
+                    zoom: 17,
+                  ),
+                  onMapCreated: (GoogleMapController controller) {
                     setState(() {
-                      _makers.add(
-                          Marker(
-                              markerId: MarkerId('id-1'),
-                              position:LatLng(4.926288, 8.332270),
-                              infoWindow: InfoWindow(
-                                title: 'Medical Center',
-                              )
-                          )
-                      );
+                      _makers.add(Marker(
+                          markerId: MarkerId('id-1'),
+                          position: LatLng(4.926288, 8.332270),
+                          infoWindow: InfoWindow(
+                            title: 'Medical Center',
+                          )));
                     });
                   },
                 ),

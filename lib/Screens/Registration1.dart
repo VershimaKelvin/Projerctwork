@@ -1,8 +1,9 @@
-import 'package:location/location.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:location/location.dart';
 import 'package:mywork/Screens/Registration2.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Registration1 extends StatefulWidget {
   @override
@@ -83,7 +84,10 @@ class _Registration1State extends State<Registration1> {
                       ),
                       child: FlatButton(
                         color: Colors.blue,
-                        onPressed: () {
+                        onPressed: () async {
+                          final prefs = await SharedPreferences.getInstance();
+                          prefs.setInt('counter', 1);
+
                           Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -114,26 +118,22 @@ class _Registration1State extends State<Registration1> {
                     target: LatLng(4.927873, 8.330530),
                     zoom: 17,
                   ),
-                  onMapCreated: (GoogleMapController controller){
+                  onMapCreated: (GoogleMapController controller) {
                     setState(() {
                       _makers.add(
-                        Marker  (
+                        Marker(
                             markerId: MarkerId('stage1'),
-                            position:LatLng(4.931485, 8.329666),
+                            position: LatLng(4.931485, 8.329666),
                             infoWindow: InfoWindow(
-                            title: 'MicroFinance',
-                          )
-                        ),
+                              title: 'MicroFinance',
+                            )),
                       );
-                      _makers.add(
-                          Marker(
-                              markerId: MarkerId('id-1'),
-                              position:LatLng(4.927873, 8.330530),
-                              infoWindow: InfoWindow(
-                                title: 'Heritage Bank',
-                              )
-                          )
-                      );
+                      _makers.add(Marker(
+                          markerId: MarkerId('id-1'),
+                          position: LatLng(4.927873, 8.330530),
+                          infoWindow: InfoWindow(
+                            title: 'Heritage Bank',
+                          )));
                     });
                   },
                 ),
@@ -144,6 +144,4 @@ class _Registration1State extends State<Registration1> {
       ),
     );
   }
-
-
 }

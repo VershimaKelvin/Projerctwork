@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mywork/Screens/Registration5.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Registration4 extends StatefulWidget {
   @override
@@ -38,8 +39,7 @@ class _Registration4State extends State<Registration4> {
                 padding: const EdgeInsets.all(8.0),
                 child: Card(
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0)
-                  ),
+                      borderRadius: BorderRadius.circular(15.0)),
                   color: Color(0xffF5F5F5),
                   child: ListTile(
                     title: Text(
@@ -51,7 +51,7 @@ class _Registration4State extends State<Registration4> {
                         color: Colors.blue,
                       ),
                     ),
-                    subtitle:Text(
+                    subtitle: Text(
                       'To Register in the faculty, take all documents used to register in the department to the faculty for registration ',
                       style: TextStyle(
                         fontSize: 13,
@@ -62,10 +62,15 @@ class _Registration4State extends State<Registration4> {
                     ),
                     trailing: FlatButton(
                       color: Colors.blue,
-                      onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => Registration5()));
+                      onPressed: () async {
+                        final prefs = await SharedPreferences.getInstance();
+                        prefs.setInt('counter', 4);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Registration5()));
                       },
-                      child:Text(
+                      child: Text(
                         'Done',
                         style: TextStyle(
                           fontSize: 15,
@@ -73,32 +78,29 @@ class _Registration4State extends State<Registration4> {
                           fontFamily: 'Cabin',
                           color: Colors.white,
                         ),
-                      ),),
+                      ),
+                    ),
                   ),
                 ),
               ),
               Container(
-
                 width: screenWidth,
-                height: screenHeight*0.7,
+                height: screenHeight * 0.7,
                 child: GoogleMap(
                   myLocationEnabled: true,
                   markers: _makers,
                   initialCameraPosition: CameraPosition(
-                  target: LatLng(4.927873,8.330530),
-                  zoom: 17,
-                ),
-                  onMapCreated: (GoogleMapController controller){
+                    target: LatLng(4.927873, 8.330530),
+                    zoom: 17,
+                  ),
+                  onMapCreated: (GoogleMapController controller) {
                     setState(() {
-                      _makers.add(
-                          Marker(
-                              markerId: MarkerId('id-1'),
-                              position:LatLng(4.929436, 8.330208),
-                              infoWindow: InfoWindow(
-                                  title: 'Faculty of Science',
-                              )
-                          )
-                      );
+                      _makers.add(Marker(
+                          markerId: MarkerId('id-1'),
+                          position: LatLng(4.929436, 8.330208),
+                          infoWindow: InfoWindow(
+                            title: 'Faculty of Science',
+                          )));
                     });
                   },
                 ),
@@ -110,4 +112,3 @@ class _Registration4State extends State<Registration4> {
     );
   }
 }
-

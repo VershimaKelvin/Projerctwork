@@ -3,9 +3,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mywork/Screens/Login.dart';
 import 'package:mywork/Screens/Registration1.dart';
+import 'package:mywork/Screens/Registration2.dart';
+import 'package:mywork/Screens/Registration3.dart';
+import 'package:mywork/Screens/Registration4.dart';
+import 'package:mywork/Screens/Registration5.dart';
+import 'package:mywork/Screens/Registration6.dart';
 import 'package:mywork/Screens/progress.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 
 class Home extends StatefulWidget {
   @override
@@ -13,34 +17,18 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
-
   dynamic data;
   String userEmail;
   FirebaseAuth _auth = FirebaseAuth.instance;
   dynamic user;
 
-
-  void _incrementCounter() async {
-    final prefs = await SharedPreferences.getInstance();
-      prefs.setInt('counter', 0);
-    data= prefs.getInt('counter');
-
-    print(data);
-  }
-
-
-
-  void initState(){
+  void initState() {
     super.initState();
-    userEmail = _auth.currentUser.email;
+    userEmail = _auth.currentUser?.email ?? '';
   }
 
   @override
   Widget build(BuildContext context) {
-
-
-
     var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -60,9 +48,10 @@ class _HomeState extends State<Home> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: GestureDetector(
-              onTap: ()async{
+              onTap: () async {
                 await _auth.signOut();
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Login()));
               },
               child: Text(
                 'Logout',
@@ -75,25 +64,21 @@ class _HomeState extends State<Home> {
             ),
           ),
         ],
-
       ),
       body: SafeArea(
         child: Container(
-          width:screenWidth,
+          width: screenWidth,
           height: screenHeight,
           decoration: BoxDecoration(
-
             gradient: LinearGradient(
                 begin: FractionalOffset.topLeft,
                 end: FractionalOffset.bottomRight,
-                stops: [0.0,1.0],
+                stops: [0.0, 1.0],
                 colors: [
-
                   Color(0xffE8F5E9),
                   Color(0xffE0F7FA),
                 ],
-                tileMode: TileMode.clamp
-            ),
+                tileMode: TileMode.clamp),
           ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -114,16 +99,17 @@ class _HomeState extends State<Home> {
                         color: Colors.white,
                       ),
                       child: Image(
-                        image:  AssetImage('assets/splash.png'),
+                        image: AssetImage('assets/splash.png'),
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left:5.0),
+                      padding: const EdgeInsets.only(left: 5.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Text('Hi $userEmail',
+                          Text(
+                            'Hi $userEmail',
                             style: TextStyle(
                               fontSize: 14,
                               fontFamily: 'Cabin',
@@ -136,7 +122,8 @@ class _HomeState extends State<Home> {
                           ),
                           Container(
                             width: 160,
-                            child: Text('Here is a list of items you need to check... ',
+                            child: Text(
+                              'Here is a list of items you need to check... ',
                               style: TextStyle(
                                 fontSize: 13,
                                 fontFamily: 'Cabin',
@@ -144,19 +131,47 @@ class _HomeState extends State<Home> {
                               ),
                             ),
                           ),
-
                         ],
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 80,),
+                SizedBox(
+                  height: 80,
+                ),
                 Center(
                   child: Column(
                     children: [
                       GestureDetector(
-                        onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => Registration1()));
+                        onTap: () async {
+                          Widget widget = Registration1();
+                          final prefs = await SharedPreferences.getInstance();
+                          int intValue = prefs.getInt('counter');
+                          switch (intValue) {
+                            case 1:
+                              widget = Registration2();
+                              break;
+                            case 2:
+                              widget = Registration3();
+                              break;
+                            case 3:
+                              widget = Registration4();
+                              break;
+                            case 4:
+                              widget = Registration5();
+                              break;
+                            case 5:
+                              widget = Registration6();
+                              break;
+
+                            default:
+                          }
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => widget,
+                            ),
+                          );
                         },
                         child: Container(
                           height: 80,
@@ -178,7 +193,7 @@ class _HomeState extends State<Home> {
                                 color: Colors.blue,
                               ),
                             ),
-                            subtitle:Text(
+                            subtitle: Text(
                               'Get directions to registration offices and required documents',
                               style: TextStyle(
                                 fontSize: 13,
@@ -190,10 +205,15 @@ class _HomeState extends State<Home> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 40,),
+                      SizedBox(
+                        height: 40,
+                      ),
                       GestureDetector(
-                        onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => Progress()));
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Progress()));
                         },
                         child: Container(
                           height: 80,
@@ -218,7 +238,7 @@ class _HomeState extends State<Home> {
                                 color: Colors.blue,
                               ),
                             ),
-                            subtitle:Text(
+                            subtitle: Text(
                               'See how far you have gone with your registration ',
                               style: TextStyle(
                                 fontSize: 13,
@@ -233,7 +253,6 @@ class _HomeState extends State<Home> {
                     ],
                   ),
                 ),
-
               ],
             ),
           ),
