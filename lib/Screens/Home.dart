@@ -3,7 +3,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mywork/Screens/Login.dart';
 import 'package:mywork/Screens/Registration1.dart';
+import 'package:mywork/Screens/Registration2.dart';
+import 'package:mywork/Screens/Registration3.dart';
+import 'package:mywork/Screens/Registration4.dart';
+import 'package:mywork/Screens/Registration5.dart';
+import 'package:mywork/Screens/Registration6.dart';
 import 'package:mywork/Screens/progress.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -137,11 +143,35 @@ class _HomeState extends State<Home> {
                   child: Column(
                     children: [
                       GestureDetector(
-                        onTap: () {
+                        onTap: () async {
+                          Widget widget = Registration1();
+                          final prefs = await SharedPreferences.getInstance();
+                          int intValue = prefs.getInt('counter');
+                          switch (intValue) {
+                            case 1:
+                              widget = Registration2();
+                              break;
+                            case 2:
+                              widget = Registration3();
+                              break;
+                            case 3:
+                              widget = Registration4();
+                              break;
+                            case 4:
+                              widget = Registration5();
+                              break;
+                            case 5:
+                              widget = Registration6();
+                              break;
+
+                            default:
+                          }
                           Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Registration1()));
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => widget,
+                            ),
+                          );
                         },
                         child: Container(
                           height: 80,
