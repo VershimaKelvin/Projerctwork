@@ -31,8 +31,8 @@ class _LoginState extends State<Login> {
 
         if(user!=null){
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Login Successful'),));
-          userEmail = await _auth.currentUser.email;
-          Navigator.pop(context, MaterialPageRoute(builder: (context) => Home()));
+          userEmail = _auth.currentUser.email;
+          Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
         }
 
       }on FirebaseAuthException catch (e) {

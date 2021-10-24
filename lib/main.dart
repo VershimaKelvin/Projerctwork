@@ -12,7 +12,7 @@ Future<void> main() async {
   print("flutterfire initialise finished");
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: Home(),
+    home: Login(),
   ));
   }
 

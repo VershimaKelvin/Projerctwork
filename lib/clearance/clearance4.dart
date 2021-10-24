@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:mywork/Screens/Home.dart';
+import 'package:mywork/clearance/clearance5.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class Registration6 extends StatefulWidget {
+class Clearance4 extends StatefulWidget {
   @override
-  _Registration6State createState() => _Registration6State();
+  _Clearance4State createState() => _Clearance4State();
 }
 
-class _Registration6State extends State<Registration6> {
+class _Clearance4State extends State<Clearance4> {
   Set<Marker> _makers = {};
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class _Registration6State extends State<Registration6> {
         backgroundColor: Colors.blue,
         title: Center(
           child: Text(
-            'Final stage',
+            'Stage 4',
             style: TextStyle(
               fontSize: 20,
               fontFamily: 'Cabin',
@@ -43,16 +43,16 @@ class _Registration6State extends State<Registration6> {
                   color: Color(0xffF5F5F5),
                   child: ListTile(
                     title: Text(
-                      'Medicals',
+                      'Store Clearance',
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 16,
                         fontWeight: FontWeight.bold,
                         fontFamily: 'Cabin',
                         color: Colors.blue,
                       ),
                     ),
                     subtitle: Text(
-                      'This is the final stage of your Registration, you need to get your medicals done at the schools clinic',
+                      'Take your fee clearance card and Matriculation gown receipt to the store ',
                       style: TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.normal,
@@ -63,14 +63,12 @@ class _Registration6State extends State<Registration6> {
                     trailing: FlatButton(
                       color: Colors.blue,
                       onPressed: () async {
-                        final prefs = await SharedPreferences.getInstance();
-                        prefs.setInt('counter', 6);
+                        final prefs2 = await SharedPreferences.getInstance();
+                        prefs2.setInt('counter2', 4);
                         Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Home(),
-                          ),
-                        );
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Clearance5()));
                       },
                       child: Text(
                         'Done',
@@ -87,7 +85,7 @@ class _Registration6State extends State<Registration6> {
               ),
               Container(
                 width: screenWidth,
-                height: screenHeight * 0.7,
+                height: screenHeight * 0.73,
                 child: GoogleMap(
                   myLocationEnabled: true,
                   markers: _makers,
@@ -98,10 +96,10 @@ class _Registration6State extends State<Registration6> {
                   onMapCreated: (GoogleMapController controller) {
                     setState(() {
                       _makers.add(Marker(
-                          markerId: MarkerId('id-1'),
-                          position: LatLng(4.926288, 8.332270),
+                          markerId: MarkerId('clearance4'),
+                          position: LatLng(4.928421,8.330083),
                           infoWindow: InfoWindow(
-                            title: 'Medical Center',
+                            title: 'CRUTECH Store',
                           )));
                     });
                   },

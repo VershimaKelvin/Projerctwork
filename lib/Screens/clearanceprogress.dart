@@ -1,29 +1,28 @@
 import 'dart:developer';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class Progress extends StatefulWidget {
+class ClearanceProgress extends StatefulWidget {
   @override
-  _ProgressState createState() => _ProgressState();
+  _ClearanceProgressState createState() => _ClearanceProgressState();
 }
 
-class _ProgressState extends State<Progress> {
-  int progress;
-  void getIntValue() async {
+class _ClearanceProgressState extends State<ClearanceProgress> {
+  int progress2;
+  void getIntValue2() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    int intValue = prefs.getInt('counter');
+    int intValue2 = prefs.getInt('counter2');
     if (mounted) {
       setState(() {
-        progress = intValue;
+        progress2 = intValue2;
       });
     }
-    print(progress);
+    print(progress2);
   }
 
   void initState() {
-    getIntValue();
+    getIntValue2();
     super.initState();
   }
 
@@ -53,7 +52,7 @@ class _ProgressState extends State<Progress> {
             child: ListView(
               children: [
                 Text(
-                  'Here are the items you have completed for your registration.',
+                  'Here are the items you have completed for your Clearance.',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -66,39 +65,45 @@ class _ProgressState extends State<Progress> {
                 ),
                 ProgressWidget(
                   title: 'Step 1',
-                  subTitle: 'Pay acceptance fee',
+                  subTitle: 'Faculty clearance',
                   widgetStep: 1,
-                  userCurrentStep: progress ?? 0,
+                  userCurrentStep: progress2 ?? 0,
                 ),
                 ProgressWidget(
                   title: 'Step 2',
-                  subTitle: 'Pay School fees',
+                  subTitle: 'Departmental Clearance',
                   widgetStep: 2,
-                  userCurrentStep: progress ?? 0,
+                  userCurrentStep: progress2 ?? 0,
                 ),
                 ProgressWidget(
                   title: 'Step 3',
-                  subTitle: 'Departmental Registration',
+                  subTitle: 'Library Clearance',
                   widgetStep: 3,
-                  userCurrentStep: progress ?? 0,
+                  userCurrentStep: progress2 ?? 0,
                 ),
                 ProgressWidget(
                   title: 'Step 4',
-                  subTitle: 'Faculty Registration',
+                  subTitle: 'Store Clearance',
                   widgetStep: 4,
-                  userCurrentStep: progress ?? 0,
+                  userCurrentStep: progress2 ?? 0,
                 ),
                 ProgressWidget(
                   title: 'Step 5',
-                  subTitle: 'Certificate Verification Clearance',
+                  subTitle: 'Hostel and sport and Clearance',
                   widgetStep: 5,
-                  userCurrentStep: progress ?? 0,
+                  userCurrentStep: progress2 ?? 0,
                 ),
                 ProgressWidget(
-                  title: 'Step 3',
-                  subTitle: 'Medicals',
+                  title: 'Step 6',
+                  subTitle: 'Security Clearance',
                   widgetStep: 6,
-                  userCurrentStep: progress ?? 0,
+                  userCurrentStep: progress2 ?? 0,
+                ),
+                ProgressWidget(
+                  title: 'Step 7',
+                  subTitle: 'Medical Clearance',
+                  widgetStep: 7,
+                  userCurrentStep: progress2 ?? 0,
                 ),
 
               ],
@@ -111,7 +116,6 @@ class _ProgressState extends State<Progress> {
 }
 
 class ProgressWidget extends StatelessWidget {
-
   const ProgressWidget({
     Key key,
     @required this.title,
@@ -132,8 +136,8 @@ class ProgressWidget extends StatelessWidget {
       color: widgetStep == userCurrentStep
           ? Colors.green[300]
           : userCurrentStep < widgetStep
-              ? Color(0xff9e9e9e)
-              : Colors.green[300],
+          ? Color(0xff9e9e9e)
+          : Colors.green[300],
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
       child: ListTile(
         title: Text(

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:mywork/Screens/Home.dart';
+import 'package:mywork/clearance/clearance4.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class Registration6 extends StatefulWidget {
+class Clearance3 extends StatefulWidget {
   @override
-  _Registration6State createState() => _Registration6State();
+  _Clearance3State createState() => _Clearance3State();
 }
 
-class _Registration6State extends State<Registration6> {
+class _Clearance3State extends State<Clearance3> {
   Set<Marker> _makers = {};
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class _Registration6State extends State<Registration6> {
         backgroundColor: Colors.blue,
         title: Center(
           child: Text(
-            'Final stage',
+            'Stage 3',
             style: TextStyle(
               fontSize: 20,
               fontFamily: 'Cabin',
@@ -38,23 +38,23 @@ class _Registration6State extends State<Registration6> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Card(
+                  color: Color(0xffF5F5F5),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0)),
-                  color: Color(0xffF5F5F5),
                   child: ListTile(
                     title: Text(
-                      'Medicals',
+                      'Library Clearance',
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 16,
                         fontWeight: FontWeight.bold,
                         fontFamily: 'Cabin',
                         color: Colors.blue,
                       ),
                     ),
                     subtitle: Text(
-                      'This is the final stage of your Registration, you need to get your medicals done at the schools clinic',
+                      'Take your fee clearance card and library card to the library for library clearance',
                       style: TextStyle(
-                        fontSize: 13,
+                        fontSize: 12,
                         fontWeight: FontWeight.normal,
                         fontFamily: 'Cabin',
                         color: Color(0xff424242),
@@ -63,12 +63,12 @@ class _Registration6State extends State<Registration6> {
                     trailing: FlatButton(
                       color: Colors.blue,
                       onPressed: () async {
-                        final prefs = await SharedPreferences.getInstance();
-                        prefs.setInt('counter', 6);
+                        final prefs2 = await SharedPreferences.getInstance();
+                        prefs2.setInt('counter2', 3);
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => Home(),
+                            builder: (context) => Clearance4(),
                           ),
                         );
                       },
@@ -87,7 +87,7 @@ class _Registration6State extends State<Registration6> {
               ),
               Container(
                 width: screenWidth,
-                height: screenHeight * 0.7,
+                height: screenHeight * 0.73,
                 child: GoogleMap(
                   myLocationEnabled: true,
                   markers: _makers,
@@ -98,15 +98,15 @@ class _Registration6State extends State<Registration6> {
                   onMapCreated: (GoogleMapController controller) {
                     setState(() {
                       _makers.add(Marker(
-                          markerId: MarkerId('id-1'),
-                          position: LatLng(4.926288, 8.332270),
+                          markerId: MarkerId('clearance3'),
+                          position: LatLng(4.929731,8.330336),
                           infoWindow: InfoWindow(
-                            title: 'Medical Center',
+                            title: 'School Library',
                           )));
                     });
                   },
                 ),
-              )
+              ),
             ],
           ),
         ),
