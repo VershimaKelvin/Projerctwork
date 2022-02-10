@@ -1,7 +1,8 @@
 <p align="center">
    <img src="assets/splash.png", width="200">
 </p>
-<h3 align="center">MyCRUTECH\</>
+<h3 align="center">MyCRUTECH</>
+   <br />
 <div align="center">
 
 
