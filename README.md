@@ -2,6 +2,9 @@
    <img src="assets/splash.png", width="200">
 </p>
 <h3 align="center">MyCRUTECH</> 
+<p align="center">
+  ![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fvershimakelvin)
+</p>
 <br>
    
    
