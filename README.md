@@ -27,4 +27,4 @@ To run the source code in your IDE, clone the repo
 
 after cloning, get all the dependencies by running
 
- *-- flutter pub get
+ *-- flutter pub get*
