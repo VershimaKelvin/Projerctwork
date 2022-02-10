@@ -38,9 +38,9 @@ after getting all dependency, if no dependency issue arises, the app is ready to
 
  ## ScreenShots
 |              |              |               |
-|<img src="assets/mywork7.jpg" alt="drawing" width="300"/>|<img src="assets/mywork6.jpg" alt="drawing" width="300"/>|<img src="assets/mywork5.jpg" alt="drawing" width="300"/>
-|<img src="assets/mywork4.jpg" alt="drawing" width="300"/>|<img src="assets/mywork3.jpg" alt="drawing" width="300"/>|<img src="assets/mywork2.jpg" alt="drawing" width="300"/>
-|<img src="assets/mywork4.jpg" alt="drawing" width="300"/>|
+|<img src="assets/mywork7.jpg" alt="drawing" width="200"/>|<img src="assets/mywork6.jpg" alt="drawing" width="200"/>|<img src="assets/mywork5.jpg" alt="drawing" width="200"/>
+|<img src="assets/mywork4.jpg" alt="drawing" width="200"/>|<img src="assets/mywork3.jpg" alt="drawing" width="200"/>|<img src="assets/mywork2.jpg" alt="drawing" width="200"/>
+|<img src="assets/mywork4.jpg" alt="drawing" width="200"/>|
 
 
 
