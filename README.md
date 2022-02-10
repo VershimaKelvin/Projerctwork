@@ -6,6 +6,7 @@
   ![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fvershimakelvin)
 </p>
 ![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fvershimakelvin)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/TheAlphamerc/flutter_ecommerce_app)
 <br>
    
    
