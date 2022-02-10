@@ -23,4 +23,4 @@ MyCRUTECH is an app i built as my Bachelor of Science Project work. The topic of
 ## Installation and Usage
 To run the source code in your IDE, clone the repo
 
-** git clone https://github.com/VershimaKelvin/Projerctwork
+* git clone https://github.com/VershimaKelvin/Projerctwork
