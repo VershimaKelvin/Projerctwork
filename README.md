@@ -1,3 +1,3 @@
 <p align="center">
-   ![](assets/splash.png)
+   <img src="assets/splash.png">
 </p>
