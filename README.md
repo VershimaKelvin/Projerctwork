@@ -26,4 +26,5 @@ To run the source code in your IDE, clone the repo
 *--  git clone https://github.com/VershimaKelvin/Projerctwork*
 
 after cloning, get all the dependencies by running
+
  *-- flutter pub get
