@@ -29,4 +29,11 @@ after cloning, get all the dependencies by running
 
  *-- flutter pub get*
  
+ 
+ 
 after getting all dependency, if no dependency issue arises, the app is ready to be run on your emulator or physical device. After the project has been deployed to device, create an account and follow all instructions that appears accordingly.
+
+
+ ## ScreenShots
+
+
