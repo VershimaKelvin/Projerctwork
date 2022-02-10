@@ -7,6 +7,7 @@
 
 
 <a href="">![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fvershimakelvin)</a>
+<a href="">![GitHub Repo stars](https://img.shields.io/github/stars/VershimaKelvin/Projerctwork?style=social)</a>
 </div>
    
    
