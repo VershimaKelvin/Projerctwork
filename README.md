@@ -43,7 +43,7 @@ after getting all dependency, if no dependency issue arises, the app is ready to
 
 
 
-## Pull request and Contribtio
+## Pull request and Contribution
 Anyone interested in this project can go ahead and fork it, all pull request will be attended to within 24 hours
 
 
