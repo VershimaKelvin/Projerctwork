@@ -41,11 +41,9 @@ after getting all dependency, if no dependency issue arises, the app is ready to
  |  Screen column1  |  Screen column2  |  Screen column3
 :------------:|:-------------------------:|:-------------------------:
 <img src="assets/mywork7.jpg" width="300"/>| <img src="assets/mywork6.jpg" width="300"/> | <img src="assets/mywork5.jpg" width="300"/>
+<img src="assets/mywork4.jpg" width="300"/>| <img src="assets/mywork3.jpg" width="300"/> | <img src="assets/mywork2.jpg" width="300"/>
  
-<!--      home page | Single Car information page | Top dealers page
-:-------------------------:|:-------------------------:|:-------------------------:
-<img src="assets/mywork7.jpg" alt="drawing" width="200"/> | <img src="assets/mywork6.jpg" alt="drawing" width="200"/> | <img src="assets/mywork5.jpg" alt="drawing" width="200"/>
- -->
+
 
 <!-- <img src="assets/mywork4.jpg" alt="drawing" width="200"/>|<img src="assets/mywork3.jpg" alt="drawing" width="200"/>|<img src="assets/mywork2.jpg" alt="drawing" width="200"/>|<img src="assets/mywork4.jpg" alt="drawing" width="200"/> -->
 
