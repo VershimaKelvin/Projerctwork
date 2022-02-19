@@ -37,7 +37,7 @@ after getting all dependency, if no dependency issue arises, the app is ready to
 
 
  ## ScreenShots
-     home page             | Single Car information page | Top dealers page
+     home page | Single Car information page | Top dealers page
 :-------------------------:|:-------------------------:|:-------------------------:
 <img src="assets/mywork7.jpg" alt="drawing" width="200"/> | <img src="assets/mywork6.jpg" alt="drawing" width="200"/> | <img src="assets/mywork5.jpg" alt="drawing" width="200"/>
 
