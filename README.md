@@ -38,7 +38,7 @@ after getting all dependency, if no dependency issue arises, the app is ready to
 
  ## ScreenShots
  
- |  home page  |  Single Car information page  |  Top dealers page
+ |  Screen column1  |  Screen column2  |  Screen column3
 :------------:|:-------------------------:|:-------------------------:
 <img src="assets/mywork7.jpg" width="300"/>| <img src="assets/mywork6.jpg" width="300"/> | <img src="assets/mywork5.jpg" width="300"/>
  
