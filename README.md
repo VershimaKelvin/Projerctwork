@@ -45,10 +45,6 @@ after getting all dependency, if no dependency issue arises, the app is ready to
  
 
 
-<!-- <img src="assets/mywork4.jpg" alt="drawing" width="200"/>|<img src="assets/mywork3.jpg" alt="drawing" width="200"/>|<img src="assets/mywork2.jpg" alt="drawing" width="200"/>|<img src="assets/mywork4.jpg" alt="drawing" width="200"/> -->
-
-
-
 ## Pull request and Contribution
 Anyone interested in this project can go ahead and fork it, all pull request will be attended to within 24 hours
 
